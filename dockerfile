@@ -1,13 +1,5 @@
 FROM alpine:3.16.2
 
-#ENV GLIBC_VERSION 2.35-r0
-
-# 配置apk包加速镜像
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-	#&& echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-	#&& apk update \
-	#&& apk upgrade
-
 # 安装基础包
 RUN apk add --no-cache ca-certificates \
 	&& apk add tzdata \
@@ -79,41 +71,24 @@ RUN apk add --no-cache python3 \
 	&& pip install flask \ 
 	&& pip install flask_apscheduler traceback2
 
-		
-#CMD [ "/wb/unview.sh" ]
-# 打包应用
-#ENV APP_NAME=${APP_NAME}
-#ENV APP_ROOT="/data/apps/"${APP_NAME}
-#RUN mkdir -p $APP_ROOT
-
-#RUN mkdir /wb \ 
-	#&& adduser -D myuser \ 
-	#&& chown -R myuser /wb 
-WORKDIR /wb
-COPY . /wb
+WORKDIR /cwzs
+COPY . /cwzs
 
 COPY SourceHanSansCN-Normal.otf /usr/share/fonts/SourceHanSansCN-Normal.otf
-#USER myuser
 
 RUN set -ex \
 	&& chmod 777 /usr/share/fonts/SourceHanSansCN-Normal.otf \
-	&& chmod +x  /wb/unview.sh \
+	&& chmod +x  /cwzs/unview.sh \
 	#&& apk add --update --no-cache openssh \
 	#&& echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
 	#&& echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config \
 	#&& adduser -h /home/vivek -s /bin/sh -D vivek \
 	#&& echo -n 'vivek:172299' | chpasswd \
 	#&& echo -n 'root:172299' | chpasswd \
-	#&& chmod +x -v /wb/entrypoint.sh \
-	#&& chmod +x -v /wb/unview.sh \
-	&& chmod -R 777 /wb
+	#&& chmod +x -v /cwzs/entrypoint.sh \
+	#&& chmod +x -v /cwzs/unview.sh \
+	&& chmod -R 777 /cwzs
        
-       
-#ENTRYPOINT ["/wb/entrypoint.sh"]
-ENTRYPOINT ["/wb/unview.sh"]
-#CMD ["python3","/wb/unview.py"]
-EXPOSE 8080 2222
+ENTRYPOINT ["/cwzs/unview.sh"]
 
-# 设置启动时预期的命令参数, 可以被 docker run 的参数覆盖掉.
-#CMD ["/bin/bash"]
-#CMD $APP_ROOT/$APP_NAME
+EXPOSE 8080 2222
