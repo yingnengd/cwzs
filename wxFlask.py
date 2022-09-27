@@ -11,12 +11,11 @@ from flask_apscheduler import APScheduler
 m = random.randint(1,3)
 s = random.randint(1,20)
 
-class Config(object):  # 创建配置，用类
-    JOBS = [  # 任务列表
-        {  # 任务字典（细节）
+class Config(object):
+    JOBS = [
+        {
             'id': 'index',
             'func': '__main__:index',
-            # 'args': (1, 2),
             'trigger': 'cron',
             'timezone':"Asia/Shanghai",
             'day_of_week':'mon-sun',

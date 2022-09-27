@@ -1,10 +1,11 @@
-import wxpy
+from wxpy import *
 import time
 
 class sbcw():
 
     def send_msg(self):
-        bot = wxpy.Bot()
+        # bot = wxpy.Bot()
+        bot = Bot(cache_path=True) 
 
         found1 = bot.groups().search(u'药小招全国群')
         obj1 = found1[0]
@@ -99,3 +100,5 @@ class sbcw():
             # for user in users:
                 # user.send(t)
         except:pass
+
+# send_msg()
