@@ -68,7 +68,7 @@ RUN apk add --no-cache python3 \
 	#&& apk add --no-cache xvfb-run \
 	&& apk add chromium chromium-chromedriver \
 	&& pip install requests selenium \
-	&& pip install flask \ 
+	&& pip install flask wxpy\ 
 	&& pip install flask_apscheduler traceback2
 
 WORKDIR /cwzs
