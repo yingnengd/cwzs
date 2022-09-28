@@ -3,7 +3,7 @@ import time
 
 def send_msg():
     # bot = wxpy.Bot()
-    bot = Bot(cache_path=True) 
+    bot = Bot(cache_path='wxpy.pkl') 
 
     found1 = bot.groups().search(u'药小招全国群')
     obj1 = found1[0]
