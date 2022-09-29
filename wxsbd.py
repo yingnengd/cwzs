@@ -29,15 +29,15 @@ def send_msg():
     obj7 = found7[0]
     print(obj7)
 
-    found8 = bot.groups().search(u'【饲料联盟】45群')
-    obj8 = found8[0]
-    print(obj8)
+    # found8 = bot.groups().search(u'【饲料联盟】45群')
+    # obj8 = found8[0]
+    # print(obj8)
 
-    # found10 = bot.groups().search(u'院长是我二大爷')
-    # obj10 = found10[0]
-    # print(obj10)
+    found10 = bot.groups().search(u'【广东】医药代表交流群')
+    obj10 = found10[0]
+    print(obj10)
 
-    # found11 = bot.groups().search(u'库房空着等我压')
+    # found11 = bot.groups().search(u'广州医药代表交流群')
     # obj11 = found11[0]
     # print(obj11)
 
@@ -53,7 +53,7 @@ def send_msg():
     obj16 = found16[0]
     print(obj16)
 
-    found17 = bot.groups().search(u'欣欣小超市')
+    found17 = bot.groups().search(u'2020中国医疗器械论坛群')
     obj17 = found17[0]
     print(obj17)
 
@@ -74,8 +74,13 @@ def send_msg():
     obj21 = found21[0]
     print(obj21)
 
+    found22 = bot.groups().search(u'线上药房业务交流群17')
+    obj22 = found22[0]
+    print(obj22)
+
     us = [obj20,obj21]
-    users = [obj1,obj2,obj3,obj4,obj7,obj8,obj13,obj14,obj16,obj17,obj18,obj19]
+    users = [obj1,obj2,obj3,obj4,obj7,obj10,obj13,obj14,obj16,obj17,obj18,obj19,obj22]
+    users2 = [obj1,obj2,obj4,obj7,obj10,obj13,obj14,obj16,obj17,obj18,obj19,obj22]
     txt = open('wcso.txt', 'r', encoding='utf-8')
     t = txt.read()
     print(t)
@@ -83,11 +88,16 @@ def send_msg():
     tc = open('wxcw.txt', 'r', encoding='utf-8')
     c = tc.read()
     print(c)
+
+    jky = open('jky.txt', 'r', encoding='utf-8')
+    j = jky.read()
     try:
         for u in us:
             u.send(c)
         for user in users:
             user.send(t)
+        for user2 in users2:
+            user2.send(j)
     except:pass
 
 send_msg()
